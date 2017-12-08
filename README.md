@@ -1,3 +1,3 @@
 # Fancy-Calculator-App-
 This is a calculator GUI application built using the Tkinter module in python that will perform the basic mathematical operations.
-screenshot: https://github.com/jamesgeorge007/Fancy-Calculator-App-/tree/master/Calculator/Screenshots
+Screenshot: https://github.com/jamesgeorge007/Fancy-Calculator-App-/tree/master/Calculator/Screenshots
