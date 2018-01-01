@@ -1,7 +1,7 @@
 # Fancy-Calculator-App
 
 
-<h2> <u> Basic Info </u> </h2>
+# # Basic Info
 <p>
 This is a calculator GUI application built using the Tkinter module in python that will perform the basic mathematical operations.
 </p>
