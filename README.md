@@ -1,4 +1,4 @@
-<h1> <font family="forte"> <b> <u> Fancy-Calculator-App </u> </b> </font> </h1>
+<h1> <font face="forte" color="magenta"> <b> <u> Fancy-Calculator-App </u> </b> </font> </h1>
 
 <h2>
 This is a calculator GUI application built using the Tkinter module in python that will perform the basic mathematical operations.
