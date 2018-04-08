@@ -26,7 +26,9 @@ class Calculator:
 
         self.i = -1
 
-        self.sum = 0
+        # The final result.
+
+        self.result = 0
 
         # Building up the UI part.
         
@@ -68,8 +70,8 @@ class Calculator:
         self.nine = Button(text="9",font='times 25 bold',relief='groove',width=4,bd=4,fg='blue',bg='red', command=self.nine_clicked)
         self.nine.grid(row=3,column=2)
 
-        self.plus = Button(text="+",font='times 25 bold',relief='groove',width=4,bd=4,fg='maroon',bg='blue', command=self.add)
-        self.plus.grid(row=3,column=3)
+        self.addition = Button(text="+",font='times 25 bold',relief='groove',width=4,bd=4,fg='maroon',bg='blue', command=self.add)
+        self.addition.grid(row=3,column=3)
 
         #Second row
 
@@ -82,8 +84,8 @@ class Calculator:
         self.six = Button(text="6",font='times 25 bold',relief='groove',width=4,bd=4,fg='blue',bg='red', command=self.six_clicked)
         self.six.grid(row=4,column=2)
 
-        self.subtract=Button(text="-",font='times 25 bold',relief='groove',width=4,bd=4,fg='lime',bg='magenta', command=self.subtract)
-        self.subtract.grid(row=4,column=3)
+        self.subtraction = Button(text="-",font='times 25 bold',relief='groove',width=4,bd=4,fg='lime',bg='magenta', command=self.subtract)
+        self.subtraction.grid(row=4,column=3)
 
         #Third row
 
@@ -96,16 +98,16 @@ class Calculator:
         self.three = Button(text="3",font='times 25 bold',relief='groove',width=4,bd=4,fg='blue',bg='red', command=self.three_clicked)
         self.three.grid(row=5,column=2)
 
-        self.multiplication = Button(text="X",font='times 25 bold',relief='groove',width=4,bd=4,fg='skyblue',bg='darkgreen', command=self.multiply)
+        self.multiplication = Button(text="*",font='times 25 bold',relief='groove',width=4,bd=4,fg='skyblue',bg='darkgreen', command=self.multiply)
         self.multiplication.grid(row=5,column=3)
 
         #Fourth row
 
-        self.negation = Button(text="+/-",font='times 25 bold',relief='groove',width=4,bd=4,fg='red',bg='blue', command=self.negation)
+        self.negation = Button(text="+/-",font='times 25 bold',relief='groove',width=4,bd=4,fg='red',bg='blue', command=self.negate)
         self.negation.grid(row=6,column=0)
 
-        self.result = Button(text="=",font='times 25 bold',relief='groove',width=4,bd=4,fg='red',bg='blue', command=self.equals)
-        self.result.grid(row=6,column=1)
+        self.ans = Button(text="=",font='times 25 bold',relief='groove',width=4,bd=4,fg='red',bg='blue', command=self.equals)
+        self.ans.grid(row=6,column=1)
 
         self.delete = Button(text="DEL",font='times 25 bold',relief='groove',width=4,bd=4,fg='red',bg='blue', command=self.clear)
         self.delete.grid(row=6,column=2)
@@ -154,53 +156,188 @@ class Calculator:
 
 
 
-    # Mathematical operations performed by these functions are invoked by respective button clicks
+    # Mathematical operations performed by these functions are invoked by their respective button clicks.
 
     def add(self):
 
-        self.list.append(int(self.textfield.get()))
-        self.i+=1
-            
-        self.sum += self.list[self.i]
+        self.i += 1
 
-        print(self.sum)     
-             
-        self.textfield.delete(0, 16)
+        try:
+
+            self.list.append(int(self.textfield.get()))
+
+        except:
+
+            self.list.append(0)
+
+        self.btn_clicked = 'addition'
+
+        if self.i is 0:
+
+            self.textfield.delete(0, 16)
+            self.result = self.list[self.i]
+
+        else:
+
+            self.textfield.delete(0, 16)
+
+            if self.list[self.i] is not self.result:
+                
+                self.result += self.list[self.i]    
 
 
     def subtract(self):
 
-        self.list.append(int(self.textfield.get()))
-        self.i+=1
-        self.textfield.delete(0, 16)
+        self.i += 1
+
+        try:
+
+            self.list.append(int(self.textfield.get()))
+
+        except:
+
+            self.list.append(0)
+
+        self.btn_clicked = 'subtraction'
+
+        print(self.list, ", ", self.result, ", ",self.list[self.i])
+
+        if self.i is 0:
+
+            self.textfield.delete(0, 16)
+            self.result = self.list[self.i]
+
+        else:
+
+            self.textfield.delete(0, 16)
+
+            if self.list[self.i] is not self.result:
+                
+                self.result -= self.list[self.i]    
 
 
     def multiply(self):
 
-        self.list.append(int(self.textfield.get()))
         self.i+=1
-        self.textfield.delete(0, 16)
+
+        try:
+
+            self.list.append(int(self.textfield.get()))
+
+        except:
+
+            self.list.append(0)
+
+        self.btn_clicked = 'multiplication'
+
+        if self.i is 0:
+
+            self.textfield.delete(0, 16)
+            
+            self.result = self.list[self.i]
+
+        else:
+
+            self.textfield.delete(0, 16)
+
+            if self.list[self.i] is not self.result:
+                
+                self.result *= self.list[self.i]
 
 
     def divide(self):
 
-        self.list.append(int(self.textfield.get()))
         self.i+=1
+
+        try:
+
+            self.list.append(int(self.textfield.get()))
+
+        except:
+
+            self.list.append(0)
+
+        self.btn_clicked = 'division'
+
+        if self.i is 0:
+
+            self.result = self.list[self.i]
+            
+            self.textfield.delete(0, 16)
+
+        else:
+            
+            try:
+                if self.list[self.i] is not self.result:
+                    
+                    self.result //= self.list[self.i]    
+             
+            except ZeroDivisonError:
+
+                self.messagebox.showwarning("warning", "Division by zero is not possible!")
+
+            self.textfield.delete(0, 16)
+
+
+    def negate(self):
+
         self.textfield.delete(0, 16)
 
+        try:
 
-    def negation(self):
+            self.element = int(self.textfield.get())
 
-        self.textfield.insert(0, '-'+self.textfield.get())    
-        self.list.append(int(self.textfield.get()*-1))
+            print(self.element)
+
+            self.textfield.insert(16, self.element*-1)
+
+        except:
+
+            print('Exception')
 
     def equals(self):
-        pass
+
+        try:
+
+            self.list.append(int(self.textfield.get()))
+
+            if self.btn_clicked is 'addition':
+                
+                 self.result += int(self.textfield.get())
+
+            elif self.btn_clicked is 'subtraction':
+                
+                 self.result -= int(self.textfield.get())
+
+            elif self.btn_clicked is 'multiplication':        
+                
+                 self.result *= int(self.textfield.get())
+
+            else:
+
+                 self.result //= int(self.textfield.get())
+
+            self.textfield.delete(0, 16)
+        
+            self.textfield.insert(16, self.result)
+
+        except:
+
+            pass
 
 
     def clear(self):
 
-        self.textfield.delete(0, 16)
+        print(self.result)
+        print(self.list)
+
+        self.i = -1
+
+        self.list = []
+
+        self.result = 0
+
+        self.textfield.delete(0, 20)
 
 
         
