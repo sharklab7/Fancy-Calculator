@@ -4,9 +4,9 @@
 ## Basic Info
 
 <p>
-This is a calculator GUI application built using the Tkinter module in python that will perform the basic mathematical operations.
+This is a Desktop Application showcasing a Calculator built on top of the Tkinter module in python that will perform the basic mathematical operations.
 </p>
 
-## Screenshot
+## Have a look!
 
 <img src="https://github.com/jamesgeorge007/Fancy-Calculator-App-/blob/master/Calculator/assets/calc_image.JPG">
