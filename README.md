@@ -9,4 +9,4 @@ This is a Desktop Application showcasing a Calculator built on top of the Tkinte
 
 ## Have a look!
 
-![Demo](https://github.com/jamesgeorge007/Fancy-Calculator-App-/blob/master/Calculator/assets/calc_image.JPG)
+![Demo](https://github.com/jamesgeorge007/Fancy-Calculator/blob/master/assets/calc_image.JPG)
